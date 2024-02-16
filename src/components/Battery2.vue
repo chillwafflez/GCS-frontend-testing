@@ -1,5 +1,5 @@
 <template>
-<div :bind="w">This is from parent component: {{ newPercentage }}</div>
+<div>This is from parent component: {{ percentage }}</div>
 
 <div class="outer_div">
     <div class="container">
@@ -27,44 +27,63 @@
 </template>
 
 <script lang="ts">
+    function resetBattery() {
+        document.getElementById("battery_icon").style.visibility = "hidden" 
+        document.getElementById("section_1").style.visibility = "visible"
+        document.getElementById("section_2").style.visibility = "visible"
+        document.getElementById("section_3").style.visibility = "visible"
+        document.getElementById("section_4").style.visibility = "visible"
+        document.getElementById("section_1").style.width = "100%";
+        document.getElementById("section_1").style.backgroundColor = "rgb(116, 194, 92)"
+        document.getElementById("section_2").style.backgroundColor = "rgb(116, 194, 92)"
+        document.getElementById("section_3").style.backgroundColor = "rgb(116, 194, 92)"
+        document.getElementById("section_4").style.backgroundColor = "rgb(116, 194, 92)"
+    }
+
     export default {
         data() {
             return {
-                percentage: 0
+                critical: 0
             };    
         },
         props: {
-            newPercentage: { required: true, type: Number}
+            percentage: { required: true, type: Number}
         },
-        setup(props) {
-            console.log(props.newPercentage)
+        watch: {
+            percentage: function() {
+                console.log("COCOOCOCOCOOK")
+                resetBattery();
+                if (this.percentage == -1) {
+                    console.log("bruh")
+                } else if (this.percentage <= 10) {
+                    document.getElementById("section_1").style.backgroundColor = "red";
+                    document.getElementById("section_1").style.width = "50%";
+                    document.getElementById("battery_icon").style.visibility = "visible"
+
+                    document.getElementById("section_2").style.visibility = "hidden";
+                    document.getElementById("section_3").style.visibility = "hidden"; 
+                    document.getElementById("section_4").style.visibility = "hidden"; 
+                } else if (this.percentage <= 25) {
+                    document.getElementById("section_1").style.backgroundColor = "gray";
+                    document.getElementById("section_2").style.visibility = "hidden";
+                    document.getElementById("section_3").style.visibility = "hidden"; 
+                    document.getElementById("section_4").style.visibility = "hidden"; 
+                } else if (this.percentage <= 50) {
+                    document.getElementById("section_1").style.backgroundColor = "rgb(245, 225, 44)";
+                    document.getElementById("section_2").style.backgroundColor = "rgb(245, 225, 44)";
+                    document.getElementById("section_3").style.visibility = "hidden"; 
+                    document.getElementById("section_4").style.visibility = "hidden"; 
+                } else if (this.percentage <= 75) {
+                    document.getElementById("section_4").style.visibility = "hidden"; 
+                }
+            }
         },
         computed: {
-            updateBattery() {
-                switch (this.newPercentage) {
-                    case -1:
-                        console.log("-1")
-                    case 10:
-                        console.log("10")
-                    case 25:
-                        console.log("25")
-                    case 50:
-                        console.log("50")
-                    case 75:
-                        console.log("75")
-                    case 100:
-                        console.log("100")
-                }
+            percentageStatus() {
 
             }
         },
         methods: {
-            // updateBattery(percent: number) {
-            //     if (percent <= 20) {
-            //         // document.getElementById("section_2").style.visibility = 'hidden';
-            //         this.percentage = percent;
-            //     };
-            // },
             makeBattery50() {
                 document.getElementById("section_1").style.backgroundColor = "rgb(245, 225, 44)";
                 document.getElementById("section_2").style.backgroundColor = "rgb(245, 225, 44)";

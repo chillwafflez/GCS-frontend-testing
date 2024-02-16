@@ -3,7 +3,6 @@
 // import Battery from './components/Battery.vue';
 import Battery2 from './components/Battery2.vue';
 
-
 </script>
 
 <template>
@@ -14,7 +13,7 @@ import Battery2 from './components/Battery2.vue';
 
 
   <h1>Below is the Battery2 component</h1>
-  <Battery2 ref="first_battery2_comp" />
+  <Battery2 :percentage=100 ref="first_battery2_comp"/>
 
 </template>
 
