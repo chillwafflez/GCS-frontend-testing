@@ -1,45 +1,51 @@
-<!-- Green lit 4 segment one that can adjust to size of outer component -->
+<!-- Battery2 before it get changed to adjust to size -->
+
 
 <template>
-<!-- <div>This is from parent component: {{ percentage }}</div> -->
-
-<div class="outer_div">
-    <div class="container">
-        <div class="battery_section" id="section_1"></div>
-        <div class="battery_section" id="section_2"></div>
-        <div class="battery_section" id="section_3"></div>
-        <div class="battery_section" id="section_4"></div>
+    <div>This is from parent component: {{ percentage_battery3 }}</div>
+    
+    <!-- <div class="outer_div">
+        <div class="container">
+            <div class="battery_section" id="section_1"></div>
+            <div class="battery_section" id="section_2"></div>
+            <div class="battery_section" id="section_3"></div>
+            <div class="battery_section" id="section_4"></div>
+        </div>
+        <div class="battery_widget"></div>
+        <img src="..\assets\lightning-icon-png-5.png" id="battery_icon">
+    </div> -->
+    <div class="outer_div">
+        <div class="container">
+            <div class="battery_section" id="section_1"></div>
+            <div class="battery_section" id="section_2"></div>
+            <div class="battery_section" id="section_3"></div>
+            <div class="battery_section" id="section_4"></div>
+        </div>
+        <div class="battery_widget"></div>
+        <img src="..\assets\lightning-icon-png-5.png" id="battery_icon">
     </div>
-    <div class="battery_widget"></div>
-    <img src="..\assets\lightning-icon-png-5.png" id="battery_icon">
-</div>
-
-<!-- <div class="outer_div_2">
-    <br>
-    <div class="container_2">
-        <div class="battery_section section_1_2"></div>
-        <div class="battery_section section_2_2"></div>
-        <div class="battery_section section_3_2"></div>
-        <div class="battery_section section_4_2"></div>
-    </div>
-    <div class="battery_widget_2"></div>
-    <img src="..\assets\lightning-icon-png-5.png" id="battery_icon_2">
-</div> -->
-
+    
+    <div class="outer_div_2">
+        <br>
+        <div class="container_2">
+            <div class="battery_section section_1_2"></div>
+            <div class="battery_section section_2_2"></div>
+            <div class="battery_section section_3_2"></div>
+            <div class="battery_section section_4_2"></div>
+        </div>
+        <div class="battery_widget_2"></div>
+        <img src="..\assets\lightning-icon-png-5.png" id="battery_icon_2">
+    </div>    
 </template>
 
 <script lang="ts">
-    // function to reset battery css
     function resetBattery() {
-        // hides flashing battery symbol
         document.getElementById("battery_icon").style.visibility = "hidden" 
-        // makes all battery segments visible again
         document.getElementById("section_1").style.visibility = "visible"
         document.getElementById("section_2").style.visibility = "visible"
         document.getElementById("section_3").style.visibility = "visible"
         document.getElementById("section_4").style.visibility = "visible"
         document.getElementById("section_1").style.width = "100%";
-        // changes all battery segments to green
         document.getElementById("section_1").style.backgroundColor = "rgb(116, 194, 92)"
         document.getElementById("section_2").style.backgroundColor = "rgb(116, 194, 92)"
         document.getElementById("section_3").style.backgroundColor = "rgb(116, 194, 92)"
@@ -53,35 +59,33 @@
             };    
         },
         props: {
-            percentage: { required: true, type: Number},
+            percentage_battery3: { required: true, type: Number}
         },
         watch: {
-            percentage: function() {
+            percentage_battery3: function() {
+                console.log("COCOOCOCOCOOK")
                 resetBattery();
-                if (this.percentage <= 0) {
-                    document.getElementById("section_1").style.visibility = "hidden";
-                    document.getElementById("section_2").style.visibility = "hidden";
-                    document.getElementById("section_3").style.visibility = "hidden"; 
-                    document.getElementById("section_4").style.visibility = "hidden";
-                    document.getElementById("battery_icon").style.visibility = "visible"
-                } else if ((this.percentage > 0) && (this.percentage <= 10)) {
+                if (this.percentage_battery3 == -1) {
+                    console.log("bruh")
+                } else if (this.percentage_battery3 <= 10) {
                     document.getElementById("section_1").style.backgroundColor = "red";
                     document.getElementById("section_1").style.width = "50%";
                     document.getElementById("battery_icon").style.visibility = "visible"
+
                     document.getElementById("section_2").style.visibility = "hidden";
                     document.getElementById("section_3").style.visibility = "hidden"; 
                     document.getElementById("section_4").style.visibility = "hidden"; 
-                } else if ((this.percentage > 10) && (this.percentage <= 30)) {
+                } else if (this.percentage_battery3 <= 25) {
                     document.getElementById("section_1").style.backgroundColor = "gray";
                     document.getElementById("section_2").style.visibility = "hidden";
                     document.getElementById("section_3").style.visibility = "hidden"; 
                     document.getElementById("section_4").style.visibility = "hidden"; 
-                } else if ((this.percentage > 30) && (this.percentage <= 60)) {
+                } else if (this.percentage_battery3 <= 50) {
                     document.getElementById("section_1").style.backgroundColor = "rgb(245, 225, 44)";
                     document.getElementById("section_2").style.backgroundColor = "rgb(245, 225, 44)";
                     document.getElementById("section_3").style.visibility = "hidden"; 
                     document.getElementById("section_4").style.visibility = "hidden"; 
-                } else if ((this.percentage > 60) && (this.percentage <= 75)) {
+                } else if (this.percentage_battery3 <= 75) {
                     document.getElementById("section_4").style.visibility = "hidden"; 
                 }
             }
@@ -126,25 +130,21 @@
 <style scoped>
 /* FIRST BATTERY ICON */
     .outer_div {
-        display: flex;
-
         position: relative;
-        /* height: 110px;
-        width: 225px;     */
-        height: 12%;
-        width: 12%;  
+        /* width: 30%; */
+        height: 110px;
+        width: 225px;    
     }
 
     .container {
         position: relative;
         display: flex;
-        border: 0.1em solid black;
+        border: 0.4em solid black;
         /* height: 110px;
         width: 225px; */
         height: 100%;
         width: 100%;
-        /* border-radius: 20px; */
-        border-radius: 12%;
+        border-radius: 20px;
         background-color: white;
     }
 
@@ -157,8 +157,7 @@
         margin-bottom: 2%;
     }
     #section_1 {
-        /* border-radius: 12px 0 0 12px; */
-        border-radius: 15% 0 0 15%;
+        border-radius: 12px 0 0 12px;
         margin-left: 2%;
         visibility: visible;
     }
@@ -172,32 +171,25 @@
         visibility: visible;
     }
     #section_4 {
-        /* border-radius: 0 12px 12px 0; */
-        border-radius: 0 15% 15% 0;
-
+        border-radius: 0 12px 12px 0;
         margin-right: 2%;
         visibility: visible;
     }
 
     .battery_widget {
-        position: relative;
-        /* height: 50%; */
+        position: absolute;
         height: 50%;
-        /* width: 20px; */
-        width: 10%;  
+        width: 20px; 
         background-color:black; 
-        /* left: 242px; */
+        left: 242px;
         top: 30%;
-        left: 1%;
-        /* top: 30%; */
-        /* border-radius: 0 12px 12px 0; */
-        border-radius: 0 25% 25% 0;
+        border-radius: 0 12px 12px 0;
     }
 
     #battery_icon {
         position: absolute;
         width: 40%;
-        left: 30%;
+        left: 34%;
         top: 15%;
         animation: blinker 1s linear infinite;
         visibility: hidden;
