@@ -2,19 +2,6 @@
 
 
 <template>
-    <!-- <div>This is from parent component: {{ percentage }}</div> -->
-    
-    <!-- <div class="outer_div">
-        <div class="container">
-            <div class="battery_section" id="section_1"></div>
-            <div class="battery_section" id="section_2"></div>
-            <div class="battery_section" id="section_3"></div>
-            <div class="battery_section" id="section_4"></div>
-        </div>
-        <div class="battery_widget"></div>
-        <img src="..\assets\lightning-icon-png-5.png" id="battery_icon">
-    </div> -->
-
     <div class="outer_div">
         <div class="battery_container">
             <div :class="percentageCSS" :style="{ width: this.percentage + '%' }"></div>
@@ -63,7 +50,6 @@
     
     
     <style scoped>
-    /* FIRST BATTERY ICON */
         .outer_div {
             display: flex;
     
