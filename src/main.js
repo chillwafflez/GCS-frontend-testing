@@ -5,6 +5,7 @@ import { createApp } from 'vue'
 
 // createApp(App).mount('#app')
 
-import App from './App2.vue'
+    // import App from './App2.vue'
+import Bruh from './MapScreen.vue'
 
-createApp(App).mount('#app')
+createApp(Bruh).mount('#app')

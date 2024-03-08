@@ -1,21 +1,17 @@
 <template>
     <div class="outer_div">
-        <div class="container">
-            <!-- <div class="bar" id="bar_1"></div> -->
-            <div v-if="latency <= 10" class="grayed_bar" style='height: 20%'></div>
+        <div class="connection-container">
+            <div v-if="latency == 0" class="grayed_bar" style='height: 20%'></div>
             <div v-else class="bar" style='height: 20%'></div>
 
-            <!-- <div class="bar" id="bar_2"></div> -->
-            <div v-if="latency <= 30" class="grayed_bar" style='height: 40%'></div>
+            <div v-if="latency >= 70 || latency == 0" class="grayed_bar" style='height: 40%'></div>
             <div v-else class="bar" style='height: 40%'></div>
 
-            <!-- <div class="bar" id="bar_3"></div> -->
-            <div v-if="latency <= 50" class="grayed_bar" style='height: 60%'></div>
+            <div v-if="latency >= 60 || latency == 0" class="grayed_bar" style='height: 60%'></div>
             <div v-else class="bar" style='height: 60%'></div>
 
-            <div v-if="latency <= 70" class="grayed_bar" style='height: 80%'></div>
+            <div v-if="latency >= 40 || latency == 0" class="grayed_bar" style='height: 80%'></div>
             <div v-else class="bar" style='height: 80%'></div>
-            <!-- <div class="bar" id="bar_4"></div> -->
         </div>
         <span class="connection_number">{{ latency }} ms</span>
     </div>
@@ -44,15 +40,15 @@
         height: 25%;
         width: 10%;  
     }
-    .container {
+    .connection-container {
         position: relative;
         justify-content: center;
         display: flex;
-        gap: 0.1em;
+        gap: 0.05em;
         height: 100%;
         width: 100%;
         border-radius: 12%;
-        background-color: white;
+        /* background-color: white; */
     }
     .bar {
         width:100%;
@@ -73,7 +69,8 @@
         position: absolute;
         left: 110%;
         bottom: 0%;
-        width: 120%;
+        width: 180%;
+        font-size:0.8em;
     }
     
 </style> 
