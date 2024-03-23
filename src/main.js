@@ -5,7 +5,6 @@ import { createApp } from 'vue'
 
 // createApp(App).mount('#app')
 
-    // import App from './App2.vue'
-import Bruh from './MapScreen.vue'
-
-createApp(Bruh).mount('#app')
+// testing flight components
+import AppFlight from './AppFlight.vue'
+createApp(AppFlight).mount('#app')

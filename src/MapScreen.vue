@@ -1,11 +1,5 @@
 <!-- <script setup> -->
 <script setup>
-// import Battery from './components/Battery.vue';
-// import Battery2 from './components/Battery2.vue';
-import Battery3 from './components/Battery3.vue';
-import Battery4 from './components/Battery4.vue';
-import Battery2v2 from './components/Battery2v2.vue';
-import Connection from './components/Connection.vue';
 import Status from './components/StatusWidget.vue';
 import NavBar from './components/NavBarGCS.vue';
 
